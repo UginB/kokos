@@ -1,0 +1,44 @@
+.footer {
+    height: 185px;
+    background: rgba(32, 50, 38, 0.65);
+    padding: 53px 120px;
+    &__links {
+        position: absolute;
+        left: 0;
+        width: 536px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    &__logo {
+        width: 79px;
+        height: 79px;
+    }
+    &__year {
+        font-style: normal;
+        font-weight: normal;
+        font-size: 24px;
+        color: #FFFFFF;
+    }
+    &__link-img {
+        width: 37px;
+        height: 37px;
+    }
+    &__dev {
+        position: absolute;
+        right: 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        height: 79px;
+        width: 365px;
+    }
+    &__dev__link {
+        text-decoration: none;
+        text-align: left;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 18px;
+        color: #FFFFFF;
+    }
+}

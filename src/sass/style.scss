@@ -1,0 +1,26 @@
+@import 'base/fonts';
+// @import 'base/variables';
+// @import 'base/animations';
+* {
+    font-family: 'Gotham Pro', sans-serif;
+    box-sizing: border-box;
+    margin: 0;
+}
+
+.container {
+    position: relative;
+    max-width: 1210px;
+    margin: 0 auto;
+}
+
+
+@import 'blocks/header';
+@import 'blocks/menu';
+@import 'blocks/information';
+@import 'blocks/title';
+@import 'blocks/assortment';
+@import 'blocks/staff';
+@import 'blocks/reviews';
+@import 'blocks/tiny-slider';
+@import 'blocks/footer';
+// @import 'blocks/pageup';

@@ -1,0 +1,108 @@
+.staff {
+    padding: 10vh 0 10vh 0;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    &__item {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 386px;
+        height: 579px;
+        margin-bottom: 12vh;
+    }
+    &__photos {
+        height: 372px;
+    }
+    &__photo {
+        display: none;
+        width: 306px;
+        height: 372px;
+        border-radius: 9px;
+        border: 1px solid #000000;
+        &_active {
+            display: block;
+        }
+    }
+    &__arrow {
+        cursor: pointer;
+        position: absolute;
+        left: 0;
+        width: 66px;
+        height: 372px;
+        background: rgba(215, 158, 104, 0.7);
+        border-radius: 9px;
+        display: flex;
+        align-items: center;
+        justify-content: start;
+        transition: .5s ease-out all;
+        padding-left: 4px;
+        opacity: 0;
+        &:hover {
+            background: rgba(215, 158, 104, 0.7);
+            opacity: 1;
+        }
+        &_right {
+            left: auto;
+            right: 0;
+        }
+    }
+    &__dots {
+        margin-top: 27px;
+        height: 30px;
+        display: flex;
+    }
+    &__dot {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 30px;
+        height: 30px;
+        border: 1px solid #000000;
+        border-radius: 100%;
+        margin-right: 25px;
+        cursor: pointer;
+        &:nth-last-child(1) {
+            margin-right: 0;
+        }
+        &__circle {
+            width: 22px;
+            height: 22px;
+            background: #689EF1;
+            border: 1px solid #000000;
+            border-radius: 100%;
+        }
+    }
+    &__descr {
+        margin-top: 17px;
+        font-style: normal;
+        font-weight: 300;
+        font-size: 18px;
+        text-align: center;
+        div {
+            margin-top: 15px;
+        }
+    }
+    &__order {
+        text-decoration: none;
+        margin-top: 10px;
+        width: 154px;
+        height: 34px;
+        background: #E5E5E5;
+        border: 1px solid #000000;
+        border-radius: 14px;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 18px;
+        color: #000000;
+        padding: 0 18px 0 18px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        &__img {
+            width: 26px;
+            height: 26px;
+        }
+    }
+}
