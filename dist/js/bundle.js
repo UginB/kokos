@@ -131,6 +131,33 @@ window.addEventListener('DOMContentLoaded', () => {
     next: '.arrow-next__wrapper'
   });
   MainSlider.init();
+
+  const assortmentMenu = document.querySelector('.assortment__menu'),
+        menuItems = document.querySelectorAll('.assortment__menu__item'),
+        circles = document.querySelectorAll('.assortment__menu__circle');
+
+
+  
+
+    
+  
+  menuItems.forEach((item, i) => {
+    item.addEventListener('click', (e) => {
+      menuItems.forEach(btn => {
+        btn.classList.remove('assortment__menu__item_active');
+      });
+      circles.forEach(circle => {
+        circle.classList.remove('assortment__menu__circle_active');
+      });
+      if (e.currentTarget === item) {
+        item.classList.add('assortment__menu__item_active');
+        circles[i].classList.add('assortment__menu__circle_active');
+      }
+    });
+  });
+    
+
+  
 });
 
 

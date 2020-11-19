@@ -1,11 +1,11 @@
 .assortment {
     min-height: 8000px;
-    background: url('../../img/assortment_bg.png') center (center/cover) repeat-y;
+    background: url('../../img/staff_bg.png') center (center/cover) repeat-y;
     &__menu {
         margin: 0 auto;
         padding: 35px 0 25px 35px;
         max-width: 996px;
-        min-height: 162px;
+        min-height: 100px;
         background: rgba(222, 198, 161, 0.6);
         border: 1px solid #000000;
         border-radius: 76px;
@@ -14,6 +14,7 @@
         flex-wrap: wrap;
         &__item {
             position: relative;
+            transition: all 0.45s;
             display: flex;
             align-items: center;
             padding: 7px 0 7px 0;
@@ -22,19 +23,24 @@
             font-style: normal;
             font-weight: 400;
             font-size: 18px;
+            border-radius: 1.625rem;
             cursor: pointer;
+            &_active {
+                background: #DCB48C;
+            }
         }
         &__circle {
             position: absolute;
-            transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
+            transition: all 0.45s;
+            // transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
             height: 21px;
             width: 21px;
             border-radius: 1.625rem;
+            margin-left: 3px;
             border: 2px solid #000000;
-        }
-        &__circle_active {
-            background: rgba(235, 126, 24, 0.658);;;
-            width: 100%;
+            &_active {
+                background: #CF8747;
+            }
         }
         &__text {
             z-index: 2;
