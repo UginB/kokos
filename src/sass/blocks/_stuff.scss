@@ -1,9 +1,10 @@
-.staff {
+.stuff {
     padding: 10vh 0 10vh 0;
     display: flex;
     justify-content: space-around;
     flex-wrap: wrap;
     &__item {
+        user-select: none;
         position: relative;
         display: flex;
         flex-direction: column;
@@ -16,6 +17,7 @@
         height: 372px;
     }
     &__photo {
+        user-select: none;
         display: none;
         width: 306px;
         height: 372px;
@@ -26,26 +28,26 @@
         }
     }
     &__arrow {
+        user-select: none;
         cursor: pointer;
         position: absolute;
         left: 0;
         width: 66px;
         height: 372px;
-        background: rgba(215, 158, 104, 0.7);
         border-radius: 9px;
         display: flex;
         align-items: center;
-        justify-content: start;
         transition: .5s ease-out all;
         padding-left: 4px;
-        opacity: 0;
         &:hover {
             background: rgba(215, 158, 104, 0.7);
-            opacity: 1;
         }
         &_right {
+            justify-content: flex-end;
+            user-select: none;
             left: auto;
             right: 0;
+            padding-right: 4px;
         }
     }
     &__dots {
@@ -73,6 +75,9 @@
             border: 1px solid #000000;
             border-radius: 100%;
         }
+        &_active {
+            background: rgba(145, 74, 7, 0.7);
+        }
     }
     &__descr {
         margin-top: 17px;
@@ -85,11 +90,13 @@
         }
     }
     &__order {
+        cursor: pointer;
+        outline: none;
         text-decoration: none;
         margin-top: 10px;
         width: 154px;
         height: 34px;
-        background: #E5E5E5;
+        background: #e5e5e5;
         border: 1px solid #000000;
         border-radius: 14px;
         font-style: normal;
@@ -103,6 +110,9 @@
         &__img {
             width: 26px;
             height: 26px;
+        }
+        &:hover {
+            background: #00ff6a;
         }
     }
 }

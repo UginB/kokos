@@ -1,85 +1,68 @@
 export default class Slider {
-    constructor({
-      container = null, 
-      slides = null,
-      activeSlideClass = '',
-      mainSlideClass = null,
-      dots = null,
-      dotClass = '',
-      dotsActiveClass = '',
-      next = null, 
-      prev = null,
-      animate,
-      autoplay
-    }) {
-      this.container = document.querySelector(container);
-      this.slides = document.querySelectorAll(slides);
-      this.dots = document.querySelector(dots);
-      this.dotClass = dotClass;
-      this.dotsActiveClass = dotsActiveClass;
-      this.prev = document.querySelector(prev);
-      this.next = document.querySelector(next);
-      this.activeSlideClass = activeSlideClass;
-      this.mainSlideClass = mainSlideClass;
-      this.animate = animate;
-      this.autoplay = autoplay;
-      this.slideIndex = 1;
-    }
+  constructor({
+    container = null, 
+    slides = null,
+    activeSlideClass = '',
+    mainSlideClass = null,
+    dots = null,
+    dotClass = '',
+    dotsActiveClass = '',
+    nextBtn = null, 
+    prevBtn = null,
+    animationClasses = [],
+    autoplay
+  }) {
+    this.container = document.querySelectorAll(container);
+    this.slides = slides;
+    this.prevBtn =  prevBtn;
+    this.nextBtn = nextBtn;
+    this.dots = dots;
+    this.dotClass = dotClass;
+    this.dotsActiveClass = dotsActiveClass;
+    this.activeSlideClass = activeSlideClass;
+    this.mainSlideClass = mainSlideClass;
+    this.animationClasses = animationClasses;
+    this.autoplay = autoplay;
+    
+  }
 
-    createDots() {
-        while (this.dots.children.length < this.slides.length) {
-            let dot = document.createElement('div');
-            dot.classList.add(this.dotClass);
-            this.dots.appendChild(dot);
+  createDots() {
+    this.container.forEach(item => {
+      const dots = item.querySelector(this.dots);
+      while (dots.children.length < item.querySelectorAll(this.slides).length) {
+        let dot = document.createElement('div');
+        dot.classList.add(this.dotClass);
+        if(dots.parentElement.classList.contains("stuff__item")){
+          let circle = document.createElement('div');
+          circle.classList.add("stuff__dot__circle");
+          dot.appendChild(circle);
         }
-    }
+        dots.appendChild(dot);
+      }
+    });
+  }
 
-    switchSlides() {
-        this.slides.forEach((slide, i) => {
-            slide.classList.remove(this.activeSlideClass, this.mainSlideClass);
-            if (i == this.slideIndex) {
-                slide.classList.add(this.activeSlideClass, this.mainSlideClass);
-                if (this.slideIndex > 0) {
-                    slide.previousElementSibling.classList.add(this.activeSlideClass);
-                }
-            } else if (i == this.slideIndex + 1) {
-                slide.classList.add(this.activeSlideClass);
-            }
-        });
-        document.querySelectorAll(`.${this.dotClass}`).forEach(dot => {
-            dot.classList.remove(this.dotsActiveClass);
-            this.dots.children[this.slideIndex].classList.add(this.dotsActiveClass);
-        });
-    }
+  bindDotsTrigger(container) {
+    container.querySelectorAll(`.${this.dotClass}`).forEach((dot, i) => {
+      dot.addEventListener('click', () => {
+        if(this.slideIndex) {
+          this.slideIndex = i; //for Reviews
+          this.switchSlides();
+        } else if(this.slideIndex && dot.classList.contains(this.dotsActiveClass)){
+        } else {
+          this.index = i; //for Stuff
+          this.changeImg(container);
+        }
+      });
+    });
+  }
 
-    bindTriggers() {
-        this.next.addEventListener('click', () => {
-            ++this.slideIndex;
-            if (this.slideIndex > this.slides.length - 1) {
-                this.slideIndex = 0;
-            }
-            this.switchSlides();
-        });
-        this.prev.addEventListener('click', () => {
-            --this.slideIndex;
-            if (this.slideIndex < 0) {
-                this.slideIndex = this.slides.length - 1;
-            }
-            this.switchSlides();
-        });
-
-        document.querySelectorAll(`.${this.dotClass}`).forEach((dot, i) => {
-            dot.addEventListener('click', () => {
-                this.slideIndex = i;
-                this.switchSlides();
-            });
-        });
-
-    }
-
-    init() {
-        this.createDots();
-        this.switchSlides();
-        this.bindTriggers();
-    }
+  refreshDots(dotsContainer, index) {
+    dotsContainer.querySelectorAll(`.${this.dotClass}`).forEach((dot, i) => {
+      dot.classList.remove(this.dotsActiveClass);
+      if (i === index) {
+        dot.classList.add(this.dotsActiveClass);
+      }
+    });
+  }
 }

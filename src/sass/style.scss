@@ -1,4 +1,5 @@
 @import 'base/fonts';
+@import 'base/animate.min.scss';
 // @import 'base/variables';
 // @import 'base/animations';
 * {
@@ -19,8 +20,8 @@
 @import 'blocks/information';
 @import 'blocks/title';
 @import 'blocks/assortment';
-@import 'blocks/staff';
+@import 'blocks/stuff';
 @import 'blocks/reviews';
-@import 'blocks/tiny-slider';
 @import 'blocks/footer';
+
 // @import 'blocks/pageup';
