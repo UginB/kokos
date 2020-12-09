@@ -1,5 +1,6 @@
 import SliderReviews from './modules/sliderReviews';
 import SliderStuff from './modules/sliderStuff';
+import StuffSort from './modules/stuffSort';
 
 window.addEventListener('DOMContentLoaded', () => {
 
@@ -31,6 +32,15 @@ window.addEventListener('DOMContentLoaded', () => {
   });
   StuffSection.init();
 
+  const Stuff = new StuffSort({
+    menuItems:'.assortment__menu__item',
+    stuffItems: '.stuff__item',
+    menuContainer: '.assortment__menu',
+    stuffContainer: '.stuff',
+    stuffClasses: ['.turtlenecks', '.sundresses', '.pants', '.bags', '.shirts', '.cardigans', '.skirts', '.suits', '.socks', '.sweaters', '.tshirts', '.jeans', '.pajamas', '.boots'] 
+  });
+  Stuff.init();
+
   const assortmentMenu = document.querySelector('.assortment__menu'),
         menuItems = assortmentMenu.querySelectorAll('.assortment__menu__item'),
         circles = assortmentMenu.querySelectorAll('.assortment__menu__circle'),
@@ -61,7 +71,6 @@ window.addEventListener('DOMContentLoaded', () => {
       }
     });
   });
-
 
   // const staffItem = document.querySelectorAll('.staff__item');
 
@@ -112,19 +121,17 @@ window.addEventListener('DOMContentLoaded', () => {
 
   let backgroundIMGClass = ['header_bg-img1', 'header_bg-img2', 'header_bg-img3', 'header_bg-img4', 'header_bg-img5'];
   const headerBG = document.querySelector('header');
-  let indexBGIMG = 1;
+  let indexBGIMG = 0;
   let changeIndexBGIMG = () => { 
     if (indexBGIMG < backgroundIMGClass.length-1) {++indexBGIMG;} 
     else {indexBGIMG = 0;}
   };
-  let changeBG = setInterval(() => {
+  setInterval(() => {
     changeIndexBGIMG();
-      if (indexBGIMG-1 === 0) {
-        headerBG.classList.remove(backgroundIMGClass[backgroundIMGClass.length-1]);
-      } else {
-        headerBG.classList.remove(backgroundIMGClass[indexBGIMG-1]);
-      }
-        headerBG.classList.add(backgroundIMGClass[indexBGIMG]);
+      backgroundIMGClass.forEach(IMGClass => {
+        headerBG.classList.remove(IMGClass);
+      });
+      headerBG.classList.add(backgroundIMGClass[indexBGIMG]);
   }, 3000);
 });
 

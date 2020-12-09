@@ -242,6 +242,58 @@ class SliderStuff extends _slider__WEBPACK_IMPORTED_MODULE_0__.default {
 
 /***/ }),
 
+/***/ "./src/js/modules/stuffSort.js":
+/*!*************************************!*\
+  !*** ./src/js/modules/stuffSort.js ***!
+  \*************************************/
+/*! namespace exports */
+/*! export default [provided] [no usage info] [missing usage info prevents renaming] */
+/*! other exports [not provided] [no usage info] */
+/*! runtime requirements: __webpack_require__.r, __webpack_exports__, __webpack_require__.d, __webpack_require__.* */
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": function() { return /* binding */ StuffSort; }
+/* harmony export */ });
+class StuffSort {
+  constructor({
+    menuItems = null, 
+    stuffItems = null,
+    stuffContainer = null,
+    menuContainer = null,
+    stuffClasses = [],
+  }) {
+    this.menuItems = document.querySelectorAll(menuItems);
+    this.stuffItems = document.querySelectorAll(stuffItems);
+    this.stuffContainer = document.querySelector(stuffContainer),
+    this.menuContainer = document.querySelector(menuContainer),
+    this.stuffClasses = stuffClasses
+  }
+  
+  bindTriggers() {
+    this.stuffClasses.forEach(stuffClass => {
+      this.menuContainer.querySelector(stuffClass).addEventListener('click', () => {
+        this.stuffItems.forEach(item => {
+          item.style.display = 'none';
+          item.classList.remove('animate__animated', 'animate__fadeIn');
+        });
+        this.stuffContainer.querySelectorAll(stuffClass).forEach(item => {
+          item.style.display = 'flex';
+          item.classList.add('animate__animated', 'animate__fadeIn');
+        });
+      });
+    });
+  }
+
+  init() {
+    this.bindTriggers();
+  };
+
+}
+
+/***/ }),
+
 /***/ "./src/js/script.js":
 /*!**************************!*\
   !*** ./src/js/script.js ***!
@@ -254,7 +306,9 @@ class SliderStuff extends _slider__WEBPACK_IMPORTED_MODULE_0__.default {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _modules_sliderReviews__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./modules/sliderReviews */ "./src/js/modules/sliderReviews.js");
 /* harmony import */ var _modules_sliderStuff__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modules/sliderStuff */ "./src/js/modules/sliderStuff.js");
+/* harmony import */ var _modules_stuffSort__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./modules/stuffSort */ "./src/js/modules/stuffSort.js");
 ;
+
 
 
 window.addEventListener('DOMContentLoaded', () => {
@@ -287,6 +341,15 @@ window.addEventListener('DOMContentLoaded', () => {
   });
   StuffSection.init();
 
+  const Stuff = new _modules_stuffSort__WEBPACK_IMPORTED_MODULE_2__.default({
+    menuItems:'.assortment__menu__item',
+    stuffItems: '.stuff__item',
+    menuContainer: '.assortment__menu',
+    stuffContainer: '.stuff',
+    stuffClasses: ['.turtlenecks', '.sundresses', '.pants', '.bags', '.shirts', '.cardigans', '.skirts', '.suits', '.socks', '.sweaters', '.tshirts', '.jeans', '.pajamas', '.boots'] 
+  });
+  Stuff.init();
+
   const assortmentMenu = document.querySelector('.assortment__menu'),
         menuItems = assortmentMenu.querySelectorAll('.assortment__menu__item'),
         circles = assortmentMenu.querySelectorAll('.assortment__menu__circle'),
@@ -317,7 +380,6 @@ window.addEventListener('DOMContentLoaded', () => {
       }
     });
   });
-
 
   // const staffItem = document.querySelectorAll('.staff__item');
 
@@ -368,19 +430,17 @@ window.addEventListener('DOMContentLoaded', () => {
 
   let backgroundIMGClass = ['header_bg-img1', 'header_bg-img2', 'header_bg-img3', 'header_bg-img4', 'header_bg-img5'];
   const headerBG = document.querySelector('header');
-  let indexBGIMG = 1;
+  let indexBGIMG = 0;
   let changeIndexBGIMG = () => { 
     if (indexBGIMG < backgroundIMGClass.length-1) {++indexBGIMG;} 
     else {indexBGIMG = 0;}
   };
-  let changeBG = setInterval(() => {
+  setInterval(() => {
     changeIndexBGIMG();
-      if (indexBGIMG-1 === 0) {
-        headerBG.classList.remove(backgroundIMGClass[backgroundIMGClass.length-1]);
-      } else {
-        headerBG.classList.remove(backgroundIMGClass[indexBGIMG-1]);
-      }
-        headerBG.classList.add(backgroundIMGClass[indexBGIMG]);
+      backgroundIMGClass.forEach(IMGClass => {
+        headerBG.classList.remove(IMGClass);
+      });
+      headerBG.classList.add(backgroundIMGClass[indexBGIMG]);
   }, 3000);
 });
 
