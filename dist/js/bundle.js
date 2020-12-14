@@ -273,7 +273,7 @@ class StuffSort {
   
   bindTriggers() {
     this.stuffClasses.forEach(stuffClass => {
-      this.menuContainer.querySelector(stuffClass).addEventListener('click', () => {
+      this.menuContainer.querySelector(stuffClass).addEventListener('click', (e) => {
         this.stuffItems.forEach(item => {
           item.style.display = 'none';
           item.classList.remove('animate__animated', 'animate__fadeIn');
@@ -282,6 +282,7 @@ class StuffSort {
           item.style.display = 'flex';
           item.classList.add('animate__animated', 'animate__fadeIn');
         });
+        console.log(e.currentTarget.classList);
       });
     });
   }
@@ -346,7 +347,7 @@ window.addEventListener('DOMContentLoaded', () => {
     stuffItems: '.stuff__item',
     menuContainer: '.assortment__menu',
     stuffContainer: '.stuff',
-    stuffClasses: ['.turtlenecks', '.sundresses', '.pants', '.bags', '.shirts', '.cardigans', '.skirts', '.suits', '.socks', '.sweaters', '.tshirts', '.jeans', '.pajamas', '.boots'] 
+    stuffClasses: ['.all','.turtlenecks', '.sundresses', '.pants', '.bags', '.shirts', '.cardigans', '.skirts', '.suits', '.socks', '.sweaters', '.tshirts', '.jeans', '.pajamas', '.boots'] 
   });
   Stuff.init();
 
@@ -442,8 +443,20 @@ window.addEventListener('DOMContentLoaded', () => {
       });
       headerBG.classList.add(backgroundIMGClass[indexBGIMG]);
   }, 3000);
-});
 
+
+
+  const burgerBtn = document.querySelector('.menu__burger'),
+        menu = document.querySelector('.menu');
+  
+  burgerBtn.addEventListener('click', () => {
+    burgerBtn.classList.toggle('menu__burger_active');
+    menu.classList.toggle('menu_active');
+  });
+  
+
+
+});
 
 
 

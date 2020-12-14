@@ -37,7 +37,7 @@ window.addEventListener('DOMContentLoaded', () => {
     stuffItems: '.stuff__item',
     menuContainer: '.assortment__menu',
     stuffContainer: '.stuff',
-    stuffClasses: ['.turtlenecks', '.sundresses', '.pants', '.bags', '.shirts', '.cardigans', '.skirts', '.suits', '.socks', '.sweaters', '.tshirts', '.jeans', '.pajamas', '.boots'] 
+    stuffClasses: ['.all','.turtlenecks', '.sundresses', '.pants', '.bags', '.shirts', '.cardigans', '.skirts', '.suits', '.socks', '.sweaters', '.tshirts', '.jeans', '.pajamas', '.boots'] 
   });
   Stuff.init();
 
@@ -133,7 +133,19 @@ window.addEventListener('DOMContentLoaded', () => {
       });
       headerBG.classList.add(backgroundIMGClass[indexBGIMG]);
   }, 3000);
-});
 
+
+
+  const burgerBtn = document.querySelector('.menu__burger'),
+        menu = document.querySelector('.menu');
+  
+  burgerBtn.addEventListener('click', () => {
+    burgerBtn.classList.toggle('menu__burger_active');
+    menu.classList.toggle('menu_active');
+  });
+  
+
+
+});
 
 

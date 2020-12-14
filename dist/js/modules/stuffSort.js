@@ -15,7 +15,7 @@ export default class StuffSort {
   
   bindTriggers() {
     this.stuffClasses.forEach(stuffClass => {
-      this.menuContainer.querySelector(stuffClass).addEventListener('click', () => {
+      this.menuContainer.querySelector(stuffClass).addEventListener('click', (e) => {
         this.stuffItems.forEach(item => {
           item.style.display = 'none';
           item.classList.remove('animate__animated', 'animate__fadeIn');
@@ -24,6 +24,7 @@ export default class StuffSort {
           item.style.display = 'flex';
           item.classList.add('animate__animated', 'animate__fadeIn');
         });
+        console.log(e.currentTarget.classList);
       });
     });
   }
