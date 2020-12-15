@@ -8,11 +8,11 @@
     &__carousel {
         position: relative;
         width: 1210px;
-        height: 825px;
+        height: 730px;
         background: rgba(222, 180, 167, 0.5);
         border: 1px solid #000000;
         border-radius: 88px;
-        padding: 35px 0;
+        padding: 20px 0;
         &__container {
             display: flex;
             justify-content: space-between;
@@ -30,14 +30,14 @@
                 display: block;
             }
             &_main {
-                width: 390px;
+                width: 370px;
                 border: 1px solid #000000;
             }
         }
         &__arrow-next, &__arrow-prev {   
             user-select: none;
             position: absolute;
-            top: 35%;
+            top: 45%;
             width: 55px;
             height: 54px;
             right: 10px;
@@ -63,7 +63,7 @@
         &__dots {
             display: flex;
             justify-content: center;
-            padding-bottom: 25px;
+            padding-bottom: 20px;
         }
         &__dot {
             cursor: pointer;

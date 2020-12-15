@@ -162,3 +162,51 @@
         }
     }
 }
+
+@media (max-width: 650px) {
+    .container {
+        width: auto;
+    }
+    .header {
+        padding: 40px 0 50px 0;
+        &__logo {
+            height: 300px;
+        }
+        &__name {
+            font-size: 55px;
+        }
+        &__subtitle {
+            padding-top: 0;
+            font-size: 35px;
+        }
+    }
+    .information {
+        padding: 25px 0 0px 0;
+        .title {
+            padding-bottom: 5px;
+        }
+        &__block {
+            display: flex;
+            justify-content: center;
+            text-align: center;
+            height: 240px;
+            a img {
+                padding-left: 4px;
+                height: 17px;
+            }
+            &__img {
+                display: none;
+            }
+        }
+        &__welcome {
+            &__logo {
+                width: 60px;
+                padding-left: 10px;
+            }
+            &__descr {
+                padding-left: 0px;
+                font-size: 19px;
+            }
+        }
+    }
+}
